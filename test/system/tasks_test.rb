@@ -7,39 +7,39 @@ class TasksTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit tasks_url
-    assert_selector "h1", text: "Tasks"
+    assert_selector "h1", text: "タスク一覧ページ"
   end
 
   test "creating a Task" do
     visit tasks_url
-    click_on "New Task"
+    click_on "新規作成"
 
-    fill_in "Content", with: @task.content
-    fill_in "Title", with: @task.title
-    click_on "Create Task"
+    fill_in "内容", with: @task.content
+    fill_in "タイトル", with: @task.title
+    click_on "登録する"
 
-    assert_text "Task was successfully created"
-    click_on "Back"
+    assert_text "タスクを登録しました"
+    assert_selector "h1", text: "タスク一覧ページ"
   end
 
   test "updating a Task" do
     visit tasks_url
-    click_on "Edit", match: :first
+    click_on "編集", match: :first
 
-    fill_in "Content", with: @task.content
-    fill_in "Title", with: @task.title
-    click_on "Update Task"
+    fill_in "内容", with: @task.content
+    fill_in "タイトル", with: @task.title
+    click_on "更新する"
 
-    assert_text "Task was successfully updated"
-    click_on "Back"
+    assert_text "タスクを更新しました"
+    assert_selector "h1", text: "タスク一覧ページ"
   end
 
   test "destroying a Task" do
     visit tasks_url
     page.accept_confirm do
-      click_on "Destroy", match: :first
+      click_on "削除", match: :first
     end
 
-    assert_text "Task was successfully destroyed"
+    assert_text "タスクを削除しました"
   end
 end
