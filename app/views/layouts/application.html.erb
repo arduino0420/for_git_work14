@@ -10,7 +10,21 @@
   </head>
 
   <body>
-    <p id="notice"><%= notice %></p>
+    <nav>
+      <% if current_user %>
+        <%= link_to "アカウント", user_path(current_user), id: "my-account" %>
+        <%= link_to "ログアウト", session_path(1), method: :delete, id: "sign-out" %>
+        <%= link_to "タスク一覧", tasks_path, id: "tasks-index" %>
+        <%= link_to "タスクを登録する", new_task_path, id: "new-task" %>
+      <% else %>
+        <%= link_to "アカウント登録", new_user_path, id: "sign-up" %>
+        <%= link_to "ログイン", new_session_path, id: "sign-in" %>
+      <% end %>
+    </nav>
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: key) %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
