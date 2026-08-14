@@ -36,7 +36,7 @@ def create
 if @user.save
   session[:user_id] = @user.id
   flash[:notice] = "アカウントを登録しました"
-  redirect_to user_path(@user)
+  redirect_to tasks_path
     else
       render :new, status: :unprocessable_entity
     end
