@@ -1,9 +1,17 @@
 require 'test_helper'
 
 class TasksControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @task = tasks(:one)
-  end
+setup do
+  @user = users(:one)
+  @task = tasks(:one)
+
+  post sessions_path, params: {
+    session: {
+      email: @user.email,
+      password: "password"
+    }
+  }
+end
 
   test "should get index" do
     get tasks_url

@@ -1,0 +1,9 @@
+one:
+  name: テスト太郎
+  email: test1@example.com
+  password_digest: <%= BCrypt::Password.create("password") %>
+
+two:
+  name: テスト花子
+  email: test2@example.com
+  password_digest: <%= BCrypt::Password.create("password") %>
