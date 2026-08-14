@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     reset_session
 
     flash[:notice] = "アカウントを削除しました"
-    redirect_to new_user_path
+    redirect_to new_session_path
   end
 
   private
